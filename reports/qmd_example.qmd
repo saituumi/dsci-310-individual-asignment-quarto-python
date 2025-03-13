@@ -36,7 +36,7 @@ as well as Quarto (Allaire et al. 2022).
 
 ## Results
 
-![Horse populations for all provinces in Canada from 1906 - 1972.](../results/horse_pops_plot.png){#fig-hs1}
+![Horse populations for all provinces in Canada from 1906 - 1972.](../results/horse_pops_plot.png){#fig-hs1 width=60%}
 
 
 We can see from @fig-hs1 that Ontario, Saskatchewan and Alberta 
@@ -68,22 +68,12 @@ $$s = \sqrt{\frac{\sum_{i=1}^N (x_i - \overline{x})^2}{N-1} }$$
 
 Additionally, note that in @table-hst we consider the sample standard deviation of the number of horses during the same time span as @fig-hs1.
 
-![Horse populations for the province with the largest standard deviation](../results/horse_pops_plot_largest_sd.png){#fig-hs2 width=60%}
+![Horse populations for the province with the largest standard deviation](../results/horse_pops_plot_largest_sd.png){#fig-hs2 width=40%}
 
 @fig-hs2: Horse populations for the province with the largest standard deviation
 
 ```{python}
-def main(input_dir, out_dir):
-    create_dir_if_not_exists(out_dir)
-
-    # Load the data and do some pre-processing
-    horse_pop = pd.read_csv(input_dir)
-    horse_pop = horse_pop.query('DATE == "At June 1 (x 1,000)" and GEO != "Canada"')
-    horse_pop['GEO'] = horse_pop['GEO'].replace({"Prince Edward Island": "P.E.I."})
-    horse_pop['Value'] = horse_pop['Value'] * 1000
-    horse_pop['Ref_Date'] = horse_pop['Ref_Date'].astype(str)
-
-    largest_sd_prov = horses_sd.iloc[0]['Province']
+largest_sd_prov = 'Alberta'
 ```
 
 In @fig-hs2 we zoom in and look at the province of '{python} largest_sd_prov', which had the largest spread of values in terms of standard deviation.
