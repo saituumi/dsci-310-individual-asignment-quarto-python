@@ -36,7 +36,7 @@ as well as Quarto (Allaire et al. 2022).
 
 ## Results
 
-![](../results/horse_pops_plot.png){fig-hs1}
+![](../results/horse_pops_plot.png){#fig-hs1}
 
 @fig-hs1: Horse populations for all provinces in Canada from 1906 - 1972.
 
@@ -67,18 +67,24 @@ Note that we define standard deviation (of a sample) as
 
 $$s = \sqrt{\frac{\sum_{i=1}^N (x_i - \overline{x})^2}{N-1} }$$
 
-Additionally, note that in Table 1 we consider the sample standard deviation of the number of horses during the same time span as @fig-hs1.
+Additionally, note that in @table-hst we consider the sample standard deviation of the number of horses during the same time span as @fig-hs1.
 
-![](../results/horse_pops_plot_largest_sd.png){#fig-hs2 width=60%}
+![Horse populations for the province with the largest standard deviation](../results/horse_pops_plot_largest_sd.png){#fig-hs2 width=60%}
 
 @fig-hs2: Horse populations for the province with the largest standard deviation
+
+
+```{python}
+from generates_figure import main
+largest_sd_prov = horses_sd.iloc[0]['Province']
+```
 
 In @fig-hs2 we zoom in and look at the province of '{python} largest_sd_prov', which had the largest spread of values in terms of standard deviation.
 
 ## References
 
-@Python
-@altair
+@Python 
+@altair 
 @click
 @pandas
 @ttimbers-horses
