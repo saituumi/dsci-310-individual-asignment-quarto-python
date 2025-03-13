@@ -5,7 +5,8 @@ all: results/horse_pop_plot_largest_sd.png \
 	results/horse_pops_plot.png \
 	results/horses_spread.csv \
 	reports/qmd_example.html \
-	reports/qmd_example.pdf
+	reports/qmd_example.pdf \
+	index.html
 
 
 
@@ -21,11 +22,11 @@ reports/qmd_example.html: results reports/qmd_example.qmd
 reports/qmd_example.pdf: results reports/qmd_example.qmd
 	quarto render reports/qmd_example.qmd --to pdf
 
-docs:
-	mkdir -p docs
 
-docs/qmd_example.html: docs results reports/qmd_example.qmd
-	quarto render reports/qmd_example.qmd --to html --output-dir $(CURDIR)/docs
+index.html: results reports/qmd_example.qmd
+	quarto render reports/qmd_example.qmd --to html
+	mv reports/qmd_example.html index.html
+
 
 # clean
 clean:
