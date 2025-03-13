@@ -21,14 +21,17 @@ reports/qmd_example.html: results reports/qmd_example.qmd
 reports/qmd_example.pdf: results reports/qmd_example.qmd
 	quarto render reports/qmd_example.qmd --to pdf
 
-docs/qmd_example.html: results reports/qmd_example.qmd
-    quarto render reports/qmd_example.qmd --to html --output docs/qmd_example.html
-	
+docs:
+	mkdir -p docs
+
+docs/qmd_example.html: docs results reports/qmd_example.qmd
+	quarto render reports/qmd_example.qmd --to html --output-dir $(CURDIR)/docs
+
 # clean
 clean:
 	rm -rf results
 	rm -rf reports/qmd_example.html \
-		reports/qmd_example.pdf \
+		reports/qmad_example.pdf \
 		reports/qmd_example_files
 
 
